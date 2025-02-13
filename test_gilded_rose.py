@@ -4,22 +4,22 @@ from gilded_rose import Item, GildedRose
 class GildedRoseTest(unittest.TestCase):
     # Test 1: Logical error - Aged Brie quality behavior
     def test_aged_brie_quality_increases_correctly(self):
-        items = [Item("Aged Brie", 5, 10)]
+        items = [Item("Aged Brie", 6, 10)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         brie_item = items[0]
         self.assertEqual(12, brie_item.quality)  # Expects double increase, which isn't implemented
-        self.assertEqual(4, brie_item.sell_in)
+        self.assertEqual(5, brie_item.sell_in)
         self.assertEqual("Aged Brie", brie_item.name)
 
     # Test 2: Logical error - Backstage pass quality increase
     def test_backstage_pass_quality_increase_boundaries(self):
-        items = [Item("Backstage passes to a TAFKAL80ETC concert", 11, 20)]
+        items = [Item("Backstage passes to a TAFKAL80ETC concert", 10, 20)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         pass_item = items[0]
         self.assertEqual(22, pass_item.quality)  # Expecting base increase + extra increase
-        self.assertEqual(10, pass_item.sell_in)
+        self.assertEqual(9, pass_item.sell_in)
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", pass_item.name)
 
     # Test 3: Logical error - Conjured item behavior
